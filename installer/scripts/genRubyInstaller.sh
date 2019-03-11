@@ -67,24 +67,25 @@ echo "%Files" > $OUTPUT_FILE
 # For each destination file, generate the appropriate lines for InstallBuilder
 
 NEW_BASE_DIR=""
+saveIFS="$IFS"; IFS=$'\n'
 for i in `find $SOURCE_DIR -name \* -print`; do
-    if [ -d $i ]; then
+    if [ -d "$i" ]; then
         DIR_NAME=`echo $i | sed "s~$SOURCE_DIR~~"`
 	[ -n "$DIR_NAME" ] && DIR_NAME=`substitute_arch $DIR_NAME`
         STAT_INFO=`stat -c "%a; root; root" $i`
         printf "%-55s %s\n" "\${{RUBY_DEST}}${DIR_NAME};" "$STAT_INFO" >> $OUTPUT_DIR
     else
-        OLD_BASE_DIR=`dirname $i`
+        OLD_BASE_DIR=`dirname "$i"`
         [ "$OLD_BASE_DIR" != "$NEW_BASE_DIR" ] && echo "" >> $OUTPUT_FILE
         NEW_BASE_DIR=$OLD_BASE_DIR
 
-        FILE_NAME=`echo $i | sed "s~$SOURCE_DIR~~"`
+        FILE_NAME=`echo "$i" | sed "s~$SOURCE_DIR~~"`
 	FILE_NAME=`substitute_arch $FILE_NAME`
         STAT_INFO=`stat -c "%a; root; root" $i`
         printf "%-72s %-64s %s\n" "\${{RUBY_DEST}}${FILE_NAME};" "\${{RUBY_INT}}${FILE_NAME};" "$STAT_INFO" >> $OUTPUT_FILE
     fi
 done
-
+IFS="$saveIFS"
 # Generate ruby.data
 
 echo "Writing results to file: $OUTPUT_RESULTS"
