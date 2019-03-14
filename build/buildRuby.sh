@@ -177,7 +177,7 @@ touch configure
 echo "========================= Performing Repairing Ruby sources"
 
 # RUBY_REPAIR_LIST is set reletive to the Ruby source directory
-RUBY_REPAIR_LIST="enc/unicode/9.0.0/name2ctype.h"
+RUBY_REPAIR_LIST="enc/unicode/11.0.0/name2ctype.h"
 
 cd ${RUBY_SRCDIR}
 git checkout -- ${RUBY_REPAIR_LIST}
@@ -200,7 +200,7 @@ elevate make install
 export PATH=${RUBY_DESTDIR}/bin:$PATH
 
 echo "Installing Bundler into Ruby ..."
-elevate ${RUBY_DESTDIR}/bin/gem install ${BASE_DIR}/source/ext/gems/bundler-1.10.6.gem
+elevate ${RUBY_DESTDIR}/bin/gem install ${BASE_DIR}/source/ext/gems/bundler-1.17.3.gem
 
 echo "Installing Builder into Ruby ..."
 elevate ${RUBY_DESTDIR}/bin/gem install ${BASE_DIR}/source/ext/gems/builder-3.2.3.gem

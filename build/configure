@@ -231,6 +231,10 @@ apply_patch ${base_dir}/source/ext/patches/ruby/SSLv2_SSLv3_method.patch ${base_
 # Updating FluentD to version 0.12.32 or later may already include this patch
 apply_patch ${base_dir}/source/ext/patches/fluentd/in_exec.patch ${base_dir}/source/ext/fluentd/lib/fluent/plugin/in_exec.rb
 
+# This patch is borrowed from FluentD 1.x to support ruby +2.6
+apply_patch ${base_dir}/source/ext/patches/fluentd/support-ruby-2_6.patch ${base_dir}/source/ext/fluentd/fluentd.gemspec
+
+
 # No errors allowed from this point forward
 set -e
 
