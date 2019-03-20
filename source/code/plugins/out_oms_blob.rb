@@ -71,7 +71,7 @@ module Fluent
         headers[OMS::CaseSensitiveString.new("x-ms-AzureResourceId")] = azure_resource_id
       end
       
-      azure_region = OMS::Configuration.azure_region if define?(OMS::Configuration.azure_region)
+      azure_region = OMS::Configuration.azure_region if defined?(OMS::Configuration.azure_region)
       if !azure_region.to_s.empty?
         headers[OMS::CaseSensitiveString.new("x-ms-AzureRegion")] = azure_region
       end
@@ -369,6 +369,7 @@ module Fluent
       time = Time.now - start
       @log.trace "Success notify the data to BLOB #{time.round(3)}s"
       write_status_file("true","Sending success")
+      OMS::Telemetry.push_qos_event(OMS::SEND_BATCH, true, "", tag, records, time)
     rescue OMS::RetryRequestException => e
       @log.info "Encountered retryable exception. Will retry sending data later."
       @log.debug "Error:'#{e}'"
