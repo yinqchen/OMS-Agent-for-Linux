@@ -1,4 +1,4 @@
-# Operations Management Suite Agent for Linux (2019-02)
+# Operations Management Suite Agent for Linux (2019-02) [![Build Status](https://travis-ci.org/Microsoft/OMS-Agent-for-Linux.png?branch=master)](https://travis-ci.org/Microsoft/OMS-Agent-for-Linux)
 
 ## Overview
 Welcome to the Log Analytics agent for Linux! The agent for Linux enables rich and real-time analytics for operational data (Syslog, performance, alerts, inventory) from Linux servers, Docker containers and monitoring tools like Nagios, Zabbix and System Center.
@@ -63,7 +63,7 @@ If you are using a distro or version that is not currently supported and doesn't
 * Red Hat Enterprise Linux Server 6 and 7
 * Debian GNU/Linux 8 and 9
 * Ubuntu Linux 14.04 LTS, 16.04 LTS and 18.04 LTS
-* SUSE Linux Enteprise Server 12
+* SUSE Linux Enterprise Server 12
 ### 32-bit
 * CentOS 6
 * Oracle Linux 6
